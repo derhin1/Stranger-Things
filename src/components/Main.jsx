@@ -20,10 +20,14 @@ const Main = () =>{
                     return(
                         <div>
                             <h3>{element.title}</h3>
-                            <div>{element.author.username}</div>
-                            <div>{element.location}</div>
-                            <div>{element.description}</div>
-                            <div>{element.price}</div>
+                            <span className='subhead1'>username:</span>
+                            <span className='content'>{element.author.username}</span>
+                            <span className='subhead1'>location:</span>
+                            <span className='content'>{element.location}</span>
+                            <span className= 'subhead1'>description:</span>
+                            <span className='content'>{element.description}</span>
+                            <span className= 'subhead1'>price:</span>
+                            <span className='content'>{element.price}</span>
                             
                         </div>
                     )
