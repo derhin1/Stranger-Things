@@ -20,7 +20,7 @@ const Main = () =>{
                     return(
                         <div>
                             <h3>{element.title}</h3>
-                            <span className='subhead1'>username:</span>
+                            <div className='subhead1'>username:</div>
                             <span className='content'>{element.author.username}</span>
                             <span className='subhead1'>location:</span>
                             <span className='content'>{element.location}</span>
