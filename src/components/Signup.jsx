@@ -7,27 +7,39 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
     const [validated, setValidated] = useState(true)
     function valid(){
         if(password === confirmedPassword){
+          console.log(validated, 'function-true')
             setValidated(true) 
         }
         else{
+          
             setValidated(false)
+            console.log(validated, "function-false");
         }
     }
     async function getToken(){
         const response = await register(username, password);
+        // console.log('test')
             {
               response.data.token
                 ? localStorage.setItem("token", response.data.token)
                 : null;
             }
-
+       
     }
+  useEffect(()=>{
+    console.log(validated, 'useeffect')
+    {validated ? getToken() : null}
+  },[validated])
+
+
+
   return (
     <>
       <form
         onSubmit={async (event) => {
           event.preventDefault();
-          valid()
+          valid();
+          console.log(validated, 'validated');
         }}
       >
         <input
@@ -56,7 +68,7 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
         ></input>
         <button type="submit"> Sign Up </button>
       </form>
-      {validated ? getToken : <div>wrong</div>}
+      {validated ? null: <div>Passwords do not match.</div>}
     </>
   );
 };
