@@ -14,6 +14,7 @@ export const register = async (username, password) => {
       }),
     }
   );
-  const data = response.json();
+  const data = await response.json();
+  console.log(data, 'register')
   return data;
 };

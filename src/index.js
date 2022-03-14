@@ -1,24 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDom from "react-dom";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { useEffect } from "react/cjs/react.production.min";
-import { Main, SignUp, Navbar, Posts } from "./components";
-const [token, setToken] = useState("");
+import { BrowserRouter as Router} from "react-router-dom";
+import { Main } from "./components";
 
 ReactDom.render(
   <Router>
-    <Navbar />
-    <Switch>
-      <Route path="/Home">
-        <Main />
-      </Route>
-      <Route path="/Login">
-        <SignUp setToken={setToken} />
-      </Route>
-      <Route path="/Posts">
-        <Posts />
-      </Route>
-    </Switch>
+    <Main />
   </Router>,
 
   document.getElementById("app")
