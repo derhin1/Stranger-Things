@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { login } from "../api";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const Login = ({ username, setUsername, password, setPassword, setLoginState, loginState }) => {
+  const history = useHistory();
   const [displayError, setDisplayError] = useState(false)
   async function loginToken() {
     const response = await login(username, password);
@@ -32,7 +33,7 @@ const Login = ({ username, setUsername, password, setPassword, setLoginState, lo
         onSubmit={(event) => {
           event.preventDefault();
           loginStateValid();
-          
+          history.push('/home')
         }}
       >
         <input
