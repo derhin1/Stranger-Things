@@ -6,9 +6,15 @@ let URL = "https://strangers-things.herokuapp.com/api/2202-ftb-et-web-ft/";
 const Main = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginState, setLoginState] = useState(false);
+
+// useEffect(() => {
+//   console.log(loginState, 'loggedIn State')
+// },[loginState])
+
   return (
     <div>
-      <Navbar />
+      <Navbar loginState={loginState} setLoginState={setLoginState}/>
       <Switch>
         <Route path="/Home"></Route>
         <Route path="/Login">
@@ -17,6 +23,8 @@ const Main = () => {
             setUsername={setUsername}
             password={password}
             setPassword={setPassword}
+            setLoginState={setLoginState}
+            loginState={loginState}
           />
         </Route>
         <Route path="/Signup">

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { login } from "../api";
 import { Link } from "react-router-dom";
-const Login = ({ username, setUsername, password, setPassword }) => {
-  const [loginState, setLoginState] = useState(false);
+const Login = ({ username, setUsername, password, setPassword, setLoginState, loginState }) => {
+  const [displayError, setDisplayError] = useState(false)
   async function loginToken() {
     const response = await login(username, password);
-    console.log(response.success);
     {
       response.data.token
         ? localStorage.setItem("token", response.data.token)
@@ -16,12 +15,16 @@ const Login = ({ username, setUsername, password, setPassword }) => {
   async function loginStateValid() {
     const response = await login(username, password);
     if (response.success) {
-      setLoginState(false);
+      setLoginState(true);
+      setDisplayError(false)
       loginToken();
     } else {
-      setLoginState(true);
+      setLoginState(false);
+      setDisplayError(true)
     }
   }
+
+
 
   return (
     <>
@@ -29,6 +32,7 @@ const Login = ({ username, setUsername, password, setPassword }) => {
         onSubmit={(event) => {
           event.preventDefault();
           loginStateValid();
+          
         }}
       >
         <input
@@ -49,7 +53,7 @@ const Login = ({ username, setUsername, password, setPassword }) => {
         ></input>
         <button type="submit"> Login </button>
       </form>
-      {loginState ? <div> Username and Password Does Not Exist! </div> : null}
+      {displayError? <div> Username and Password Does Not Exist! </div> : null}
       <Link to="./Signup">Don't have an account? Sign Up!</Link>
     </>
   );

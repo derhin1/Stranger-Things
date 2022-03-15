@@ -1,15 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({loginState, setLoginState}) => {
+
+ 
   return (
     <div id="navbar">
       <Link to="./Home">Home</Link>
       <Link to="./Posts">Posts</Link>
       <Link to="./Login">Login</Link>
-      {localStorage.getItem("token") ? (
+      {loginState ? (
         <form
           onSubmit={() => {
+            setLoginState(false)
             localStorage.clear();
           }}
         >
