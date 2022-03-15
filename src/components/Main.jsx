@@ -39,7 +39,7 @@ const Main = () => {
           <Posts />
         </Route>
         <Route path="/AddNewPost">
-          <AddNewPost />
+          <AddNewPost loginState={loginState} />
         </Route>
       </Switch>
     </div>

@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 import { postNewPost } from "../api";
 
-const AddNewPost = () => {
+const AddNewPost = ({loginState}) => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [location, setLocation] = useState('')
     const [deliver, setDeliver] = useState(false);
+
+    
+
     return (
       <form
         onSubmit={(event) => {
