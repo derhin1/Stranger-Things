@@ -4,7 +4,7 @@ import { register } from "../api";
 
 const Signup = ({ username, setUsername, password, setPassword }) => {
     const [confirmedPassword, setConfirmedPassword] = useState('');
-    const [validated, setValidated] = useState(true)
+    const [validated, setValidated] = useState(false)
     function valid(){
         if(password === confirmedPassword){
           console.log(validated, 'function-true')
@@ -68,7 +68,8 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
         ></input>
         <button type="submit"> Sign Up </button>
       </form>
-      {validated ? null: <div>Passwords do not match.</div>}
+      {validated ? null:
+      password ? <div>Passwords do not match.</div> : null}
     </>
   );
 };
