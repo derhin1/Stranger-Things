@@ -16,17 +16,13 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
   }
   async function getToken() {
     const response = await register(username, password);
-    // console.log('test')
     {
       response.data.token
         ? localStorage.setItem("token", response.data.token)
         : null;
     }
   }
-  // useEffect(()=>{
-  //   console.log(validated, 'useeffect')
-  //   {validated ?  null : getToken()}
-  // },[validated])
+
 
   return (
     <>
