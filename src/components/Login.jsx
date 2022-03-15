@@ -1,19 +1,22 @@
-import React, {useState, useEffect} from "react";
-import { register } from "../api";
+import React, {useState} from "react";
+import { login} from "../api";
 import { Link } from "react-router-dom";
 const Login = ({username, setUsername, password, setPassword}) => {
-
+const [loginstate, setloginstate]= useState (false)
     return (
       <>
         <form
           onSubmit={async (event) => {
             event.preventDefault();
-            const response = await register(username, password);
+            const response = await login(username, password);
             {
+              response.success ? setloginstate (true)  : setloginstate (false) 
               response.data.token
                 ? localStorage.setItem("token", response.data.token)
                 : null;
             }
+            console.log (response.success)
+        
           }}
         >
           <input
@@ -34,6 +37,9 @@ const Login = ({username, setUsername, password, setPassword}) => {
           ></input>
           <button type="submit"> Login </button>
         </form>
+            {loginstate ? null :
+            username ?
+            password ? <div> Username and Password Does Not Exist! </div> : null : null}
         <Link to ='./Signup'>Don't have an account? Sign Up!</Link>
       </>
     );

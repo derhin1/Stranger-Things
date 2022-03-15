@@ -1,45 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { register } from "../api";
 
-
 const Signup = ({ username, setUsername, password, setPassword }) => {
-    const [confirmedPassword, setConfirmedPassword] = useState('');
-    const [validated, setValidated] = useState(false)
-    function valid(){
-        if(password === confirmedPassword){
-          console.log(validated, 'function-true')
-            setValidated(true) 
-        }
-        else{
-          
-            setValidated(false)
-            console.log(validated, "function-false");
-        }
+  const [confirmedPassword, setConfirmedPassword] = useState("");
+  const [validated, setValidated] = useState(false);
+  function valid() {
+    if (password === confirmedPassword) {
+      console.log(validated, "function-true");
+      setValidated(false);
+      getToken();
+    } else {
+      setValidated(true);
+      console.log(validated, "function-false");
     }
-    async function getToken(){
-        const response = await register(username, password);
-        // console.log('test')
-            {
-              response.data.token
-                ? localStorage.setItem("token", response.data.token)
-                : null;
-            }
-       
+  }
+  async function getToken() {
+    const response = await register(username, password);
+    // console.log('test')
+    {
+      response.data.token
+        ? localStorage.setItem("token", response.data.token)
+        : null;
     }
-  useEffect(()=>{
-    console.log(validated, 'useeffect')
-    {validated ? getToken() : null}
-  },[validated])
-
-
+  }
+  // useEffect(()=>{
+  //   console.log(validated, 'useeffect')
+  //   {validated ?  null : getToken()}
+  // },[validated])
 
   return (
     <>
       <form
-        onSubmit={async (event) => {
+        onSubmit={(event) => {
           event.preventDefault();
           valid();
-          console.log(validated, 'validated');
+          console.log(validated, "validated");
         }}
       >
         <input
@@ -68,10 +63,9 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
         ></input>
         <button type="submit"> Sign Up </button>
       </form>
-      {validated ? null:
-      password ? <div>Passwords do not match.</div> : null}
+      {validated ? <div>Passwords do not match.</div> : null}
     </>
   );
 };
 
-export default Signup
+export default Signup;
