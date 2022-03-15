@@ -8,9 +8,18 @@ const Main = () => {
   const [password, setPassword] = useState("");
   const [loginState, setLoginState] = useState(false);
 
-// useEffect(() => {
-//   console.log(loginState, 'loggedIn State')
-// },[loginState])
+  function initialLoginCheck(){
+    if(localStorage.getItem('token')){
+      setLoginState(true)
+    }
+    else(
+      setLoginState(false)
+    )
+  }
+
+useEffect(() => {
+   initialLoginCheck();
+},[])
 
   return (
     <div>
