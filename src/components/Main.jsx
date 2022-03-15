@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Login, Navbar, Posts, Signup } from "./";
+import { Login, Navbar, Posts, Signup, AddNewPost } from "./";
 let URL = "https://strangers-things.herokuapp.com/api/2202-ftb-et-web-ft/";
 
 const Main = () => {
@@ -14,7 +14,7 @@ const Main = () => {
 
   return (
     <div>
-      <Navbar loginState={loginState} setLoginState={setLoginState}/>
+      <Navbar loginState={loginState} setLoginState={setLoginState} />
       <Switch>
         <Route path="/Home"></Route>
         <Route path="/Login">
@@ -37,6 +37,9 @@ const Main = () => {
         </Route>
         <Route path="/Posts">
           <Posts />
+        </Route>
+        <Route path="/AddNewPost">
+          <AddNewPost />
         </Route>
       </Switch>
     </div>
