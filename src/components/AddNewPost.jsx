@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import { postNewPost } from "../api";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const AddNewPost = ({loginState}) => {
-    const [title, setTitle] = useState('')
+    const history = useHistory();
+    const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [location, setLocation] = useState('')
@@ -13,9 +14,9 @@ const AddNewPost = ({loginState}) => {
         if(loginState){
              await postNewPost(title, description, price, location, deliver);
         }
-        // else{
-        //    return <Link to ='./Login.jsx'>test</Link>
-        // }
+        else{
+           history.push('/Login')
+        }
     }
 
     return (
