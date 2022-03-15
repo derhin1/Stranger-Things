@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { postNewPost } from "../api";
+import { Link } from "react-router-dom";
 
 const AddNewPost = ({loginState}) => {
     const [title, setTitle] = useState('')
@@ -8,13 +9,20 @@ const AddNewPost = ({loginState}) => {
     const [location, setLocation] = useState('')
     const [deliver, setDeliver] = useState(false);
 
-    
+    async function checkLoggedIn(title,description,price,location,deliver){
+        if(loginState){
+             await postNewPost(title, description, price, location, deliver);
+        }
+        // else{
+        //    return <Link to ='./Login.jsx'>test</Link>
+        // }
+    }
 
     return (
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          postNewPost(title,description,price,location,deliver)
+          checkLoggedIn(title,description,price,location,deliver)
         }}
       >
         <input
