@@ -31,9 +31,7 @@ const Main = () => {
 
   useEffect(() => {
     getMe()
-    console.log(userObj , 'userObj')
   },[loginState])
-
   return (
     <div>
       <Navbar loginState={loginState} setLoginState={setLoginState} />
