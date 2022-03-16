@@ -8,18 +8,15 @@ const Main = () => {
   const [password, setPassword] = useState("");
   const [loginState, setLoginState] = useState(false);
 
-  function initialLoginCheck(){
-    if(localStorage.getItem('token')){
-      setLoginState(true)
-    }
-    else(
-      setLoginState(false)
-    )
+  function initialLoginCheck() {
+    if (localStorage.getItem("token")) {
+      setLoginState(true);
+    } else setLoginState(false);
   }
 
-useEffect(() => {
-   initialLoginCheck();
-},[])
+  useEffect(() => {
+    initialLoginCheck();
+  }, []);
 
   return (
     <div>
@@ -45,7 +42,7 @@ useEffect(() => {
           />
         </Route>
         <Route path="/Posts">
-          <Posts />
+          <Posts loginState={loginState} />
         </Route>
         <Route path="/AddNewPost">
           <AddNewPost loginState={loginState} />
