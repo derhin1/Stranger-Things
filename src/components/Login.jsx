@@ -16,9 +16,9 @@ const Login = ({ username, setUsername, password, setPassword, setLoginState, lo
   async function loginStateValid() {
     const response = await login(username, password);
     if (response.success) {
+      loginToken();
       setLoginState(true);
       setDisplayError(false)
-      loginToken();
     } else {
       setLoginState(false);
       setDisplayError(true)

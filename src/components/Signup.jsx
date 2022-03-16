@@ -6,12 +6,10 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
   const [validated, setValidated] = useState(false);
   function valid() {
     if (password === confirmedPassword) {
-      console.log(validated, "function-true");
       setValidated(false);
       getToken();
     } else {
       setValidated(true);
-      console.log(validated, "function-false");
     }
   }
   async function getToken() {

@@ -15,7 +15,6 @@ export const register = async (username, password) => {
     }
   );
   const data = await response.json();
-  console.log(data, "register");
   return data;
 };
 
@@ -36,7 +35,6 @@ export const login = async (username, password) => {
     }
   );
   const data = await response.json();
-  console.log(data, "login");
   return data;
 };
 
