@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchPosts, login } from "../api";
 import { Link, useHistory } from "react-router-dom";
 import { SinglePost } from "./";
-const Posts = ({ loginState }) => {
+const Posts = ({ loginState, userObj }) => {
   const [posts, setPosts] = useState([]);
   const history = useHistory();
 
@@ -32,7 +32,13 @@ const Posts = ({ loginState }) => {
       </a>
       {posts.map((post, i) => {
         return (
-            <SinglePost key ={i} posts={posts} setPosts={setPosts} post={post} />
+          <SinglePost
+            key={i}
+            posts={posts}
+            setPosts={setPosts}
+            post={post}
+            userObj={userObj}
+          />
         );
       })}
     </div>

@@ -8,7 +8,7 @@ const Main = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginState, setLoginState] = useState(false);
-  const [userObj, setUserObj] = useState({})
+  const [userObj, setUserObj] = useState({});
 
   function initialLoginCheck() {
     if (localStorage.getItem("token")) {
@@ -16,22 +16,20 @@ const Main = () => {
     } else setLoginState(false);
   }
 
-  async function getMe(){
+  async function getMe() {
     let token = localStorage.getItem("token");
     let data = await fetchMe(token);
-    console.log(data.data, 'Main Test')
-    setUserObj(data.data)
+    console.log(data.data, "Main Test");
+    setUserObj(data.data);
   }
-
- 
 
   useEffect(() => {
     initialLoginCheck();
   }, []);
 
   useEffect(() => {
-    getMe()
-  },[loginState])
+    getMe();
+  }, [loginState]);
   return (
     <div>
       <Navbar loginState={loginState} setLoginState={setLoginState} />
@@ -56,7 +54,7 @@ const Main = () => {
           />
         </Route>
         <Route path="/Posts">
-          <Posts loginState={loginState} />
+          <Posts loginState={loginState} userObj={userObj} />
         </Route>
         <Route path="/AddNewPost">
           <AddNewPost loginState={loginState} />
