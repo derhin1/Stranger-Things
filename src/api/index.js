@@ -70,3 +70,32 @@ export const postNewPost = async (title, description, location, price, willDeliv
     }
   );
 }
+
+export const deletePost = async (token, postId) => {
+  let response = await fetch(
+    `https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts/${postId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  let data = await response.json()
+  return data;
+}
+
+export const fetchMe = async (token) => {
+  let response = await fetch(
+    "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/users/me",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  let data = await response.json()
+  return data; 
+}
