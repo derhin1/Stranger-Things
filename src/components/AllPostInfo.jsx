@@ -6,7 +6,6 @@ import {fetchPosts} from '../api'
 const AllPostInfo = () => {
     const params = useParams()
     const [singlePost, setSinglePost] = useState(null)
-    console.log(params)
       useEffect(() => {
         async function fetchAllPosts(){
             let data = await fetchPosts();
