@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchPosts, login } from "../api";
+import { fetchPosts, AllPostInfo } from "../api";
 import { Link, useHistory } from "react-router-dom";
 import { SinglePost } from "./";
 const Posts = ({ loginState, userObj }) => {
@@ -38,6 +38,7 @@ const Posts = ({ loginState, userObj }) => {
             setPosts={setPosts}
             post={post}
             userObj={userObj}
+            loginState={loginState}
           />
         );
       })}

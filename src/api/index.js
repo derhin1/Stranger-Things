@@ -97,3 +97,11 @@ export const fetchMe = async (token) => {
   let data = await response.json()
   return data; 
 }
+
+export const fetchSinglePost = async (postId) => {
+  let response = await fetch(
+    `https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts/${postId}`
+  );
+  let data = await response.json()
+  return data;
+}
