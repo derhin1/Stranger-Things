@@ -11,9 +11,9 @@ const Navbar = ({ loginState, setLoginState }) => {
 
   return (
     <div id="navbar">
-      <Link to="./Home">Home</Link>
-      <Link to="./Posts">Posts</Link>
-      <Link to="./Login">Login</Link>
+      <Link to="../Home">Home</Link>
+      <Link to="../Posts">Posts</Link>
+      <Link to="../Login">Login</Link>
       {loginState ? (
         <form
           onSubmit={() => {
