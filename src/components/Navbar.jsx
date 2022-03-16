@@ -1,9 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 
-const Navbar = ({loginState, setLoginState}) => {
+const Navbar = ({ loginState, setLoginState }) => {
+  const history = useHistory();
 
- 
   return (
     <div id="navbar">
       <Link to="./Home">Home</Link>
@@ -12,8 +17,9 @@ const Navbar = ({loginState, setLoginState}) => {
       {loginState ? (
         <form
           onSubmit={() => {
-            setLoginState(false)
+            setLoginState(false);
             localStorage.clear();
+            history.push("/home");
           }}
         >
           <button type="submit"> Sign Out</button>
