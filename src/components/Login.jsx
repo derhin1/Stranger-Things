@@ -18,13 +18,13 @@ const Login = ({
         ? localStorage.setItem("token", response.data.token)
         : null;
     }
+    setLoginState(true);
   }
 
   async function loginStateValid() {
     const response = await login(username, password);
     if (response.success) {
       loginToken();
-      setLoginState(true);
       setDisplayError(false);
     } else {
       setLoginState(false);
@@ -35,6 +35,7 @@ const Login = ({
   return (
     <>
       <form
+        id="LogIn"
         onSubmit={(event) => {
           event.preventDefault();
           loginStateValid();
@@ -58,9 +59,10 @@ const Login = ({
           }}
         ></input>
         <button type="submit"> Login </button>
+        <Link to="./Signup">Don't have an account? Sign Up!</Link>
       </form>
       {displayError ? <div> Username and Password Does Not Exist! </div> : null}
-      <Link to="./Signup">Don't have an account? Sign Up!</Link>
+      {/* <Link to="./Signup">Don't have an account? Sign Up!</Link> */}
     </>
   );
 };
