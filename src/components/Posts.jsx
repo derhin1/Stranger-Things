@@ -8,9 +8,18 @@ const Posts = ({ loginState, userObj }) => {
   const history = useHistory();
 
   function postMatches(post, text) {
-    // return true if any of the fields you want to check against include the text
-    // strings have an .includes() method
+    if (
+      post.title.includes(text) ||
+      post.author.username.includes(text) ||
+      post.location.includes(text) ||
+      post.description.includes(text) ||
+      post.price.includes(text)
+    ) {
+      return true;
+    }
   }
+  const filteredPosts = posts.filter((post) => postMatches(post, searchTerm));
+  const postsToDisplay = searchTerm.length ? filteredPosts : posts;
 
 
   useEffect(async () => {
@@ -37,7 +46,19 @@ const Posts = ({ loginState, userObj }) => {
         {" "}
         Add New Post{" "}
       </a>
-      {posts.map((post, i) => {
+
+      <form>
+        <input
+          type="Text"
+          placeholder="Filter Posts"
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
+      </form>
+
+      {postsToDisplay.map((post, i) => {
         return (
           <SinglePost
             key={i}
