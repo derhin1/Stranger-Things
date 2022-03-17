@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { login } from "../api";
 import { Link, useHistory } from "react-router-dom";
-const Login = ({ username, setUsername, password, setPassword, setLoginState, loginState }) => {
+const Login = ({
+  username,
+  setUsername,
+  password,
+  setPassword,
+  setLoginState,
+  loginState,
+}) => {
   const history = useHistory();
-  const [displayError, setDisplayError] = useState(false)
+  const [displayError, setDisplayError] = useState(false);
   async function loginToken() {
     const response = await login(username, password);
     {
@@ -18,14 +25,12 @@ const Login = ({ username, setUsername, password, setPassword, setLoginState, lo
     if (response.success) {
       loginToken();
       setLoginState(true);
-      setDisplayError(false)
+      setDisplayError(false);
     } else {
       setLoginState(false);
-      setDisplayError(true)
+      setDisplayError(true);
     }
   }
-
-
 
   return (
     <>
@@ -33,7 +38,7 @@ const Login = ({ username, setUsername, password, setPassword, setLoginState, lo
         onSubmit={(event) => {
           event.preventDefault();
           loginStateValid();
-          history.push('/home')
+          history.push("/home");
         }}
       >
         <input
@@ -54,7 +59,7 @@ const Login = ({ username, setUsername, password, setPassword, setLoginState, lo
         ></input>
         <button type="submit"> Login </button>
       </form>
-      {displayError? <div> Username and Password Does Not Exist! </div> : null}
+      {displayError ? <div> Username and Password Does Not Exist! </div> : null}
       <Link to="./Signup">Don't have an account? Sign Up!</Link>
     </>
   );

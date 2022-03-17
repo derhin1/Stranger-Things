@@ -11,9 +11,16 @@ const Navbar = ({ loginState, setLoginState }) => {
 
   return (
     <div id="navbar">
-      <Link to="../Home">Home</Link>
-      <Link to="../Posts">Posts</Link>
-      <Link to="../Login">Login</Link>
+      <h2 id="logo"> Stranger's Things </h2>
+      <Link className="headLink" to="../Home">
+        Home
+      </Link>
+      <Link className="headLink" to="../Posts">
+        Posts
+      </Link>
+      <Link className="headLink" to="../Login">
+        Login
+      </Link>
       {loginState ? (
         <form
           onSubmit={() => {

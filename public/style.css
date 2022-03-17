@@ -1,3 +1,26 @@
-.subhead1 {
-  
+@import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
+
+#navbar {
+  display: flex;
+  background-color: #227c9d;
+  justify-content: space-evenly;
+  height: 3rem;
+  align-items: center;
+}
+
+.headLink {
+  color: #fef9ef;
+  text-decoration: none;
+  font-family: "Syne Mono", monospace;
+}
+
+#logo {
+  color: #fef9ef;
+  font-family: "Syne Mono", monospace;
+  padding-right: 25rem;
+  padding-left: none;
+}
+
+#LogIn {
+  border: 1px solid black;
 }
