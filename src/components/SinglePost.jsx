@@ -38,7 +38,7 @@ const SinglePost = ({ posts, setPosts, post, userObj, loginState }) => {
             handleViewMessage(post._id);
           }}
         >
-          Send Message
+          View Post
         </button>
       ) : null}
 

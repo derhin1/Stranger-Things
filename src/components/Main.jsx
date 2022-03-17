@@ -75,6 +75,9 @@ const Main = () => {
         <Route path="/Profile">
           <Profile userObj={userObj} />
         </Route>
+        <Route path="/">
+          <Home loginState={loginState} userObj={userObj} />
+        </Route>
       </Switch>
     </div>
   );
