@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSinglePost } from "../api";
-import { fetchPosts } from "../api";
+import { fetchPosts, updateSinglePost } from "../api";
 
 const AllPostInfo = ({ userObj }) => {
   const params = useParams();
@@ -24,16 +24,24 @@ const AllPostInfo = ({ userObj }) => {
     fetchAllPosts();
   }, []);
 
-  console.log(singlePost, "singlePost");
 
   function editForm() {
     setEditing(true);
   }
 
+  // console.log(singlePost)
+
+  async function handleSubmit(token, singlePostId, title, description, price, location, deliver){
+   let updatedPost = await updateSinglePost(token, singlePostId, title, description, price, location, deliver)
+    setSinglePost(updatedPost.data.post)
+  }
+
+
   let editInputs = (
     <form
       onSubmit={(event) => {
         event.preventDefault();
+        handleSubmit(localStorage.getItem('token'), singlePost._id, title, description, price, location, deliver)
       }}
     >
       <input
@@ -84,6 +92,8 @@ const AllPostInfo = ({ userObj }) => {
 
   let content = singlePost ? (
     <>
+      <h3>{singlePost.title}</h3>
+      <div className="subhead1">username: {singlePost.author.username}</div>
       <span className="subhead1">location:</span>
       <span className="content">{singlePost.location}</span>
       <span className="subhead1">description:</span>

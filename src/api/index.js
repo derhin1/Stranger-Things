@@ -140,5 +140,6 @@ export const updateSinglePost = async (
     }
   );
   let data = await response.json();
+  console.log(data, 'api data')
   return data;
 };
