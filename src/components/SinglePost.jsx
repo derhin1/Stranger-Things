@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { AllPostInfo } from "./";
 const SinglePost = ({ posts, setPosts, post, userObj, loginState }) => {
   const history = useHistory();
+
   async function handleDelete(token, postId) {
     const data = await deletePost(token, postId);
     const filterPost = posts.filter((post) => {
@@ -13,11 +14,10 @@ const SinglePost = ({ posts, setPosts, post, userObj, loginState }) => {
   }
 
   function handleViewMessage(postId) {
-    // <Route to={`/Posts/${postId}`}>
-    //     <AllPostInfo />
-    // </Route>
     history.push(`/Posts/${postId}`);
   }
+
+  
 
   return (
     <>
@@ -33,8 +33,6 @@ const SinglePost = ({ posts, setPosts, post, userObj, loginState }) => {
           View Post
         </button>
       ) : null}
-
-      {/* {loginState ? <Link to={`/Posts/${post._id}`}></Link>} */}
 
       {userObj ? (
         post.author.username === userObj.username ? (

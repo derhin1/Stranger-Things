@@ -28,7 +28,6 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
         onSubmit={(event) => {
           event.preventDefault();
           valid();
-          console.log(validated, "validated");
         }}
       >
         <input

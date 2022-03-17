@@ -20,7 +20,6 @@ const Main = () => {
   async function getMe() {
     let token = localStorage.getItem("token");
     let data = await fetchMe(token);
-    console.log(data.data, "Main Test");
     setUserObj(data.data);
   }
 
@@ -61,7 +60,7 @@ const Main = () => {
           <AddNewPost loginState={loginState} />
         </Route>
         <Route path='/Posts/:id'>
-          <AllPostInfo />
+          <AllPostInfo userObj={userObj}/>
         </Route>
       </Switch>
     </div>

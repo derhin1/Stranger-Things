@@ -46,15 +46,20 @@ export const fetchPosts = async () => {
   return data;
 };
 
-
-export const postNewPost = async (title, description, location, price, willDeliver) => {
+export const postNewPost = async (
+  title,
+  description,
+  location,
+  price,
+  willDeliver
+) => {
   let response = await fetch(
     "https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts",
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         post: {
@@ -62,12 +67,12 @@ export const postNewPost = async (title, description, location, price, willDeliv
           description,
           price,
           location,
-          willDeliver
+          willDeliver,
         },
       }),
     }
   );
-}
+};
 
 export const deletePost = async (token, postId) => {
   let response = await fetch(
@@ -80,9 +85,9 @@ export const deletePost = async (token, postId) => {
       },
     }
   );
-  let data = await response.json()
+  let data = await response.json();
   return data;
-}
+};
 
 export const fetchMe = async (token) => {
   let response = await fetch(
@@ -94,14 +99,46 @@ export const fetchMe = async (token) => {
       },
     }
   );
-  let data = await response.json()
-  return data; 
-}
+  let data = await response.json();
+  return data;
+};
 
 export const fetchSinglePost = async (postId) => {
   let response = await fetch(
     `https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts/${postId}`
   );
-  let data = await response.json()
+  let data = await response.json();
   return data;
-}
+};
+
+export const updateSinglePost = async (
+  token,
+  postId,
+  title,
+  description,
+  price,
+  location,
+  willDeliver
+) => {
+  let response = await fetch(
+    `http://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts/${postId}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        post: {
+          title,
+          description,
+          price,
+          location,
+          willDeliver,
+        },
+      }),
+    }
+  );
+  let data = await response.json();
+  return data;
+};
