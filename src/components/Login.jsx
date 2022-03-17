@@ -39,6 +39,8 @@ const Login = ({
         onSubmit={(event) => {
           event.preventDefault();
           loginStateValid();
+          setUsername('')
+          setPassword('')
         }}
       >
         <h1 id="HeadLog"> Log In </h1>

@@ -18,12 +18,21 @@ const Navbar = ({ loginState, setLoginState }) => {
       <Link className="headLink" to="../Posts">
         Posts
       </Link>
-      <Link className="headLink" to="../Login">
+      {loginState ? (
+        <Link className="headLink" to="../Profile">
+          Profile
+        </Link>
+      ) : (
+        <Link className="headLink" to="../Login">
+          Login
+        </Link>
+      )}
+      {/* <Link className="headLink" to="../Login">
         Login
-      </Link>
-      <Link className="headLink" to="../Profile">
+      </Link> */}
+      {/* <Link className="headLink" to="../Profile">
         Profile
-      </Link>
+      </Link> */}
       {loginState ? (
         <form
           onSubmit={() => {
