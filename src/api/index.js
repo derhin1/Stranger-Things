@@ -140,6 +140,28 @@ export const updateSinglePost = async (
     }
   );
   let data = await response.json();
-  console.log(data, 'api data')
+  console.log(data, "api data");
+  return data;
+};
+
+export const postAMessage = async (token, postId, textMessage) => {
+  let response = await fetch(
+    `https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts/${postId}/messages`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        message: {
+          content: `${textMessage}`,
+        },
+      }),
+    }
+  );
+  let result = await response.json();
+  const data = await result.data.message;
+  console.log(data, "I AM DATA POST A MESSAGE ");
   return data;
 };

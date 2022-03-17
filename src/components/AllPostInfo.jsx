@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSinglePost } from "../api";
-import { fetchPosts, updateSinglePost } from "../api";
+import { fetchPosts, updateSinglePost, postAMessage } from "../api";
 
 const AllPostInfo = ({ userObj }) => {
   const params = useParams();
@@ -12,6 +11,7 @@ const AllPostInfo = ({ userObj }) => {
   const [location, setLocation] = useState("");
   const [deliver, setDeliver] = useState(false);
   const [editing, setEditing] = useState(false);
+  const [messageText, setMessageText] = useState("");
 
   useEffect(() => {
     async function fetchAllPosts() {
@@ -28,7 +28,7 @@ const AllPostInfo = ({ userObj }) => {
     setEditing(true);
   }
 
-  // console.log(singlePost)
+  console.log(singlePost);
 
   async function handleSubmit(
     token,
@@ -115,7 +115,7 @@ const AllPostInfo = ({ userObj }) => {
 
   let content = singlePost ? (
     <>
-      <h3>{singlePost.title}</h3>
+      <h1>{singlePost.title}</h1>
       <div className="subhead1">username: {singlePost.author.username}</div>
       <span className="subhead1">location:</span>
       <span className="content">{singlePost.location}</span>
@@ -125,18 +125,46 @@ const AllPostInfo = ({ userObj }) => {
       <span className="content">{singlePost.price}</span>
     </>
   ) : null;
-
+  async function postNewMessage(token, postId, content) {
+    await postAMessage(token, postId, content);
+  }
   return (
     <>
-      {content}
-      {userObj ? (
-        singlePost ? (
-          singlePost.author.username === userObj.username ? (
-            <button onClick={editForm}>Edit</button>
+      <>
+        {content}
+        {userObj ? (
+          singlePost ? (
+            singlePost.author.username === userObj.username ? (
+              <button onClick={editForm}>Edit</button>
+            ) : null
           ) : null
-        ) : null
-      ) : null}
-      {editing ? editInputs : null}
+        ) : null}
+        {editing ? editInputs : null}
+      </>
+
+      <>
+        <h2> Send A Message </h2>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            postNewMessage(
+              localStorage.getItem("token"),
+              singlePost._id,
+              messageText
+            );
+          }}
+        >
+          <input
+            type="Text"
+            placeholder="Send a Message"
+            value={messageText}
+            onChange={(event) => {
+              setMessageText(event.target.value);
+            }}
+          ></input>
+          <button type="submit"> Submit </button>
+        </form>
+      </>
     </>
   );
 };
