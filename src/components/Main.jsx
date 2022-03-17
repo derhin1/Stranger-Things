@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Login, Navbar, Posts, Signup, AddNewPost } from "./";
+import { Login, Navbar, Posts, Signup, AddNewPost, Profile, AllPostInfo } from "./";
 import { fetchMe } from "../api";
-import AllPostInfo from "./AllPostInfo";
 let URL = "https://strangers-things.herokuapp.com/api/2202-ftb-et-web-ft/";
 
 const Main = () => {
@@ -59,8 +58,11 @@ const Main = () => {
         <Route path="/AddNewPost">
           <AddNewPost loginState={loginState} />
         </Route>
-        <Route path='/Posts/:id'>
-          <AllPostInfo userObj={userObj}/>
+        <Route path="/Posts/:id">
+          <AllPostInfo userObj={userObj} />
+        </Route>
+        <Route path="/Profile">
+          <Profile userObj={userObj}/>
         </Route>
       </Switch>
     </div>

@@ -6,3 +6,4 @@ export { default as Signup} from './Signup';
 export { default as AddNewPost } from "./AddNewPost";
 export { default as SinglePost } from "./SinglePost";
 export { default as AllPostInfo } from "./AllPostInfo";
+export { default as Profile } from "./Profile";
