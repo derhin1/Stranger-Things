@@ -42,6 +42,7 @@ const Login = ({
           history.push("/home");
         }}
       >
+        <h1 id="HeadLog"> Log In </h1>
         <input
           type="Text"
           placeholder="username"
