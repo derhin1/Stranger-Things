@@ -26,6 +26,7 @@ const Login = ({
     if (response.success) {
       loginToken();
       setDisplayError(false);
+      history.push("/home");
     } else {
       setLoginState(false);
       setDisplayError(true);
@@ -33,13 +34,11 @@ const Login = ({
   }
 
   return (
-    <>
+    <div id="LogIn">
       <form
-        id="LogIn"
         onSubmit={(event) => {
           event.preventDefault();
           loginStateValid();
-          history.push("/home");
         }}
       >
         <h1 id="HeadLog"> Log In </h1>
@@ -64,7 +63,7 @@ const Login = ({
       </form>
       {displayError ? <div> Username and Password Does Not Exist! </div> : null}
       {/* <Link to="./Signup">Don't have an account? Sign Up!</Link> */}
-    </>
+    </div>
   );
 };
 
