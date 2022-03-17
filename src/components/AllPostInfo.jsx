@@ -12,6 +12,7 @@ const AllPostInfo = ({ userObj }) => {
   const [deliver, setDeliver] = useState(false);
   const [editing, setEditing] = useState(false);
   const [messageText, setMessageText] = useState("");
+  const [messageSent, setMessageSent] = useState(false)
 
   useEffect(() => {
     async function fetchAllPosts() {
@@ -27,8 +28,6 @@ const AllPostInfo = ({ userObj }) => {
   function editForm() {
     setEditing(true);
   }
-
-  console.log(singlePost);
 
   async function handleSubmit(
     token,
@@ -126,8 +125,17 @@ const AllPostInfo = ({ userObj }) => {
     </>
   ) : null;
   async function postNewMessage(token, postId, content) {
-    await postAMessage(token, postId, content);
+   let data = await postAMessage(token, postId, content);
+   if(data._id != null){
+     setMessageSent(true)
+   }
   }
+
+
+  // function messagePostChecker(){
+  //   if()
+  // }
+
   return (
     <>
       <>
@@ -152,6 +160,7 @@ const AllPostInfo = ({ userObj }) => {
               singlePost._id,
               messageText
             );
+            setMessageText('')
           }}
         >
           <input
@@ -165,6 +174,7 @@ const AllPostInfo = ({ userObj }) => {
           <button type="submit"> Submit </button>
         </form>
       </>
+      {messageSent ? <div>Message was sent!</div> : null}
     </>
   );
 };

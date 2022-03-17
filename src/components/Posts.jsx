@@ -4,7 +4,14 @@ import { Link, useHistory } from "react-router-dom";
 import { SinglePost } from "./";
 const Posts = ({ loginState, userObj }) => {
   const [posts, setPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const history = useHistory();
+
+  function postMatches(post, text) {
+    // return true if any of the fields you want to check against include the text
+    // strings have an .includes() method
+  }
+
 
   useEffect(async () => {
     let data = await fetchPosts();

@@ -27,12 +27,6 @@ const Navbar = ({ loginState, setLoginState }) => {
           Login
         </Link>
       )}
-      {/* <Link className="headLink" to="../Login">
-        Login
-      </Link> */}
-      {/* <Link className="headLink" to="../Profile">
-        Profile
-      </Link> */}
       {loginState ? (
         <form
           onSubmit={() => {
