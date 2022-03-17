@@ -24,24 +24,47 @@ const AllPostInfo = ({ userObj }) => {
     fetchAllPosts();
   }, []);
 
-
   function editForm() {
     setEditing(true);
   }
 
   // console.log(singlePost)
 
-  async function handleSubmit(token, singlePostId, title, description, price, location, deliver){
-   let updatedPost = await updateSinglePost(token, singlePostId, title, description, price, location, deliver)
-    setSinglePost(updatedPost.data.post)
+  async function handleSubmit(
+    token,
+    singlePostId,
+    title,
+    description,
+    price,
+    location,
+    deliver
+  ) {
+    let updatedPost = await updateSinglePost(
+      token,
+      singlePostId,
+      title,
+      description,
+      price,
+      location,
+      deliver
+    );
+    setSinglePost(updatedPost.data.post);
+    setEditing(false);
   }
-
 
   let editInputs = (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        handleSubmit(localStorage.getItem('token'), singlePost._id, title, description, price, location, deliver)
+        handleSubmit(
+          localStorage.getItem("token"),
+          singlePost._id,
+          title,
+          description,
+          price,
+          location,
+          deliver
+        );
       }}
     >
       <input
