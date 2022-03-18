@@ -123,6 +123,8 @@ const AllPostInfo = ({ userObj }) => {
       <span className="content">{singlePost.description}</span>
       <span className="subhead1">price:</span>
       <span className="content">{singlePost.price}</span>
+      <span className="subhead1">Deliver?:</span>
+      <span className="content">{deliveryText(singlePost)}</span>
     </>
   ) : null;
   async function postNewMessage(token, postId, content) {
@@ -138,6 +140,15 @@ async function handleDelete(token, postId) {
 }
 
 
+ function deliveryText(post) {
+   if (post.willDeliver) {
+     return "Yes";
+   } else {
+     return "No";
+   }
+ }
+
+
   return (
     <>
       <>
@@ -145,26 +156,21 @@ async function handleDelete(token, postId) {
         {userObj ? (
           singlePost ? (
             singlePost.author.username === userObj.username ? (
-              <button onClick={editForm}>Edit</button>
+              <>
+                <button onClick={editForm}>Edit</button>
+                <button
+                  onClick={() => {
+                    handleDelete(localStorage.getItem("token"), singlePost._id);
+                  }}
+                >
+                  Delete
+                </button>
+              </>
             ) : null
           ) : null
         ) : null}
         {editing ? editInputs : null}
-        
-        {userObj ?
-        singlePost ? (
-          singlePost.author.username === userObj.username ? 
-          (
-            <button
-              onClick={() => {
-                handleDelete(localStorage.getItem("token"), singlePost._id);
-              }}
-            >
-              Delete
-            </button>
-          ) : null
-          ) : null
-         : null}
+
       </>
 
       <>
