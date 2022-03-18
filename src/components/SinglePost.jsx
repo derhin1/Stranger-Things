@@ -7,32 +7,48 @@ const SinglePost = ({ post, loginState }) => {
     history.push(`/Posts/${postId}`);
   }
 
-  function deliveryText(post){
-    if(post.willDeliver){
-      return 'Yes'
-    }
-    else{
-      return 'No'
+  function deliveryText(post) {
+    if (post.willDeliver) {
+      return "Yes";
+    } else {
+      return "No";
     }
   }
 
   return (
-    <>
-      <h3>{post.title}</h3>
+    <div id="Display">
+      <h3 id="DisplayHead">{post.title}</h3>
       <>
-        <div className="subhead1">username: {post.author.username}</div>
-        <span className="subhead1">location:</span>
+        <div>
+          {" "}
+          <span className="subhead1">
+            <mark> Username:</mark>
+          </span>{" "}
+          {post.author.username}
+        </div>
+        <span className="subhead1">
+          {" "}
+          <mark> Location:</mark>
+        </span>
         <span className="content">{post.location}</span>
-        <span className="subhead1">description:</span>
+        <span className="subhead1">
+          <mark> Description:</mark>
+        </span>
         <span className="content">{post.description}</span>
-        <span className="subhead1">price:</span>
+        <span className="subhead1">
+          <mark> Price:</mark>
+        </span>
         <span className="content">{post.price}</span>
-        <span className="subhead1">Deliver?:</span>
+        <span className="subhead1">
+          {" "}
+          <mark> Deliver?:</mark>
+        </span>
         <span className="content">{deliveryText(post)}</span>
       </>
 
       {loginState ? (
         <button
+          id="ViewButton"
           onClick={() => {
             handleViewMessage(post._id);
           }}
@@ -40,7 +56,7 @@ const SinglePost = ({ post, loginState }) => {
           View Post
         </button>
       ) : null}
-    </>
+    </div>
   );
 };
 

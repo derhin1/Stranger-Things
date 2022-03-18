@@ -71,3 +71,31 @@ body {
   color: #fe6d73;
   text-shadow: 2px 2px 2px #227c9d;
 }
+#PostsHead {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#Display {
+  text-align: left;
+  border: 1px solid transparent;
+  box-shadow: 4px 4px 4px #227c9d;
+  padding-bottom: 2rem;
+  margin-bottom: 40px;
+}
+#ViewButton {
+  margin-left: 100px;
+}
+#DisplayHead {
+  font-size: x-large;
+  text-decoration: double underline orange;
+}
+.subhead1 {
+  text-decoration: underline;
+  font-size: larger;
+}
+#New {
+  color: darkblue;
+}

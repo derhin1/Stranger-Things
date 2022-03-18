@@ -36,15 +36,16 @@ const Posts = ({ loginState, userObj }) => {
   }
 
   return (
-    <div>
+    <div id="PostsHead">
       <h1>Posts</h1>
       <a
+        id="New"
         onClick={() => {
           checkLoggedIn(loginState);
         }}
       >
         {" "}
-        Add New Post{" "}
+        (Add New Post){" "}
       </a>
 
       <form>
@@ -58,18 +59,20 @@ const Posts = ({ loginState, userObj }) => {
         />
       </form>
 
-      {postsToDisplay.map((post, i) => {
-        return (
-          <SinglePost
-            key={i}
-            posts={posts}
-            setPosts={setPosts}
-            post={post}
-            userObj={userObj}
-            loginState={loginState}
-          />
-        );
-      })}
+      <div>
+        {postsToDisplay.map((post, i) => {
+          return (
+            <SinglePost
+              key={i}
+              posts={posts}
+              setPosts={setPosts}
+              post={post}
+              userObj={userObj}
+              loginState={loginState}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
