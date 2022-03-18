@@ -10,6 +10,9 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
     if (password === confirmedPassword) {
       setValidated(false);
       getToken();
+      history.push("/Login");
+       setUsername("");
+       setPassword("");
     } else {
       setValidated(true);
     }
@@ -30,9 +33,6 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
         onSubmit={(event) => {
           event.preventDefault();
           valid();
-          history.push("/Login");
-          setUsername("");
-          setPassword("");
         }}
       >
         <h1 id="HeadLog"> Sign Up! </h1>
