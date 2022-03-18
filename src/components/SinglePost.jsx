@@ -15,6 +15,7 @@ const SinglePost = ({ post, loginState }) => {
     }
   }
 
+
   return (
     <div id="Display">
       <h3 id="DisplayHead">{post.title}</h3>

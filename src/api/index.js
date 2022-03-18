@@ -49,8 +49,8 @@ export const fetchPosts = async () => {
 export const postNewPost = async (
   title,
   description,
-  location,
   price,
+  location,
   willDeliver
 ) => {
   let response = await fetch(
