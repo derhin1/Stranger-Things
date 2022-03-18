@@ -66,7 +66,7 @@ body {
 }
 
 #User {
-  font-size: xx-large;
+  font-size: xxx-large;
   color: #fe6d73;
   text-shadow: 2px 2px 2px #227c9d;
 }
@@ -96,7 +96,11 @@ body {
   font-size: larger;
 }
 #New {
-  color: darkblue;
+  color: blue;
+  text-decoration: overline underline solid 2px blue;
+  background-color: yellowgreen;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 #NewPost {
@@ -127,5 +131,29 @@ body {
 }
 
 #Location {
+  margin-bottom: 10px;
+}
+
+#Profile {
+  display: flex;
+  margin-top: 70px;
+  margin-left: 25px;
+  font-size: xxx-large;
+}
+
+#Msg {
+  text-align: center;
+  width: 180px;
+  box-shadow: 4px 4px 4px #227c9d;
+  padding-bottom: 1rem;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+#InsideMsg {
+  border: solid 2px black;
   margin-bottom: 10px;
 }
