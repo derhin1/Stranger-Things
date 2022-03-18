@@ -6,7 +6,7 @@ const Login = ({
   setUsername,
   password,
   setPassword,
-  setLoginState
+  setLoginState,
 }) => {
   const history = useHistory();
   const [displayError, setDisplayError] = useState(false);
@@ -33,17 +33,19 @@ const Login = ({
   }
 
   return (
-    <div id="LogIn">
+    <div>
       <form
+        id="LogIn"
         onSubmit={(event) => {
           event.preventDefault();
           loginStateValid();
-          setUsername('')
-          setPassword('')
+          setUsername("");
+          setPassword("");
         }}
       >
         <h1 id="HeadLog"> Log In </h1>
         <input
+          id="fields"
           type="Text"
           placeholder="username"
           value={username}
@@ -52,6 +54,7 @@ const Login = ({
           }}
         ></input>
         <input
+          id="fields"
           type="Text"
           placeholder="password"
           value={password}
@@ -61,8 +64,14 @@ const Login = ({
         ></input>
         <button type="submit"> Login </button>
         <Link to="./Signup">Don't have an account? Sign Up!</Link>
+        {displayError ? (
+          <div id="Error">
+            {" "}
+            Oh no! Sorry, Username and Password Does Not Exist! Please Try
+            Again.{" "}
+          </div>
+        ) : null}
       </form>
-      {displayError ? <div> Username and Password Does Not Exist! </div> : null}
     </div>
   );
 };
