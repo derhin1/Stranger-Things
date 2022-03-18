@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
 
+body {
+  font-family: "Syne Mono", monospace;
+}
+
 #navbar {
   display: flex;
   background-color: #227c9d;
@@ -11,12 +15,10 @@
 .headLink {
   color: #fef9ef;
   text-decoration: none;
-  font-family: "Syne Mono", monospace;
 }
 
 #logo {
   color: #fef9ef;
-  font-family: "Syne Mono", monospace;
   padding-right: 25rem;
   padding-left: none;
 }
@@ -33,7 +35,6 @@
   left: 50%;
   margin-top: -50px;
   margin-left: -50px;
-  font-family: "Syne Mono", monospace;
   border: 1px solid transparent;
   align-items: center;
   box-shadow: 2px 2px 2px black;
@@ -44,8 +45,29 @@
   font-size: 45px;
 }
 
-#Error {
+#Notice {
   text-align: center;
   color: red;
   padding-top: 3px;
+}
+
+#Welcome {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: fixed;
+  top: 25%;
+  left: 18%;
+  margin-top: -50px;
+  margin-left: -50px;
+}
+
+#Greetings {
+  font-size: 5rem;
+}
+
+#User {
+  font-size: xx-large;
+  color: #fe6d73;
+  text-shadow: 2px 2px 2px #227c9d;
 }

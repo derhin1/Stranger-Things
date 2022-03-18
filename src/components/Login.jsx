@@ -64,7 +64,7 @@ const Login = ({
         <button type="submit"> Login </button>
         <Link to="./Signup">Don't have an account? Sign Up!</Link>
         {displayError ? (
-          <div id="Error">
+          <div id="Notice">
             {" "}
             Oh no! Sorry, Username and Password Does Not Exist! Please Try
             Again.{" "}
