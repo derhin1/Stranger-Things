@@ -148,31 +148,8 @@ async function handleDelete(token, postId) {
    }
  }
 
-
-  return (
-    <>
-      <>
-        {content}
-        {userObj ? (
-          singlePost ? (
-            singlePost.author.username === userObj.username ? (
-              <>
-                <button onClick={editForm}>Edit</button>
-                <button
-                  onClick={() => {
-                    handleDelete(localStorage.getItem("token"), singlePost._id);
-                  }}
-                >
-                  Delete
-                </button>
-              </>
-            ) : null
-          ) : null
-        ) : null}
-        {editing ? editInputs : null}
-
-      </>
-
+ function sendMessageForm(){
+   return (
       <>
         <h2> Send A Message </h2>
         <form
@@ -197,6 +174,35 @@ async function handleDelete(token, postId) {
           <button type="submit"> Submit </button>
         </form>
       </>
+   )
+ }
+
+
+
+  return (
+    <>
+      <>
+        {content}
+        {userObj ? (
+          singlePost ? (
+            singlePost.author.username === userObj.username ? (
+              <>
+                <button onClick={editForm}>Edit</button>
+                <button
+                  onClick={() => {
+                    handleDelete(localStorage.getItem("token"), singlePost._id);
+                  }}
+                >
+                  Delete
+                </button>
+              </>
+            ) : sendMessageForm()
+          ) : null
+        ) : null}
+        {editing ? editInputs : null}
+
+      </>
+
       {messageSent ? <div>Message was sent!</div> : null}
     </>
   );
