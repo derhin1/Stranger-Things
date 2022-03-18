@@ -21,11 +21,13 @@ const AddNewPost = ({ loginState }) => {
 
   return (
     <form
+      id="NewPost"
       onSubmit={(event) => {
         event.preventDefault();
         checkLoggedIn(title, description, price, location, deliver);
       }}
     >
+      <h1>Add A New Post</h1>
       <input
         type="Text"
         placeholder="Title"
@@ -35,6 +37,7 @@ const AddNewPost = ({ loginState }) => {
         }}
       ></input>
       <input
+        id="DescriptionBox"
         type="Text"
         placeholder="Description"
         value={description}
@@ -51,6 +54,7 @@ const AddNewPost = ({ loginState }) => {
         }}
       ></input>
       <input
+        id="Location"
         type="Text"
         placeholder="Location"
         value={location}
@@ -66,7 +70,7 @@ const AddNewPost = ({ loginState }) => {
             setDeliver(nextValue);
           }}
         ></input>
-        <span style={{ marginLeft: "6px" }}>Will Deliver?</span>
+        <span id="Deliver">Will Deliver?</span>
       </>
       <button type="submit"> Submit </button>
     </form>
