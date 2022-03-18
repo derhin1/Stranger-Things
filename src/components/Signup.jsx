@@ -3,7 +3,7 @@ import { register } from "../api";
 import { useHistory } from "react-router-dom";
 
 const Signup = ({ username, setUsername, password, setPassword }) => {
-  const history = useHistory()
+  const history = useHistory();
   const [confirmedPassword, setConfirmedPassword] = useState("");
   const [validated, setValidated] = useState(false);
   function valid() {
@@ -23,18 +23,19 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
     }
   }
 
-
   return (
     <>
       <form
+        id="FormContainers"
         onSubmit={(event) => {
           event.preventDefault();
           valid();
-          history.push('/Login')
-          setUsername('')
-          setPassword('')
+          history.push("/Login");
+          setUsername("");
+          setPassword("");
         }}
       >
+        <h1 id="HeadLog"> Sign Up! </h1>
         <input
           type="Text"
           placeholder="username"
@@ -60,8 +61,8 @@ const Signup = ({ username, setUsername, password, setPassword }) => {
           }}
         ></input>
         <button type="submit"> Sign Up </button>
+        {validated ? <div>Passwords do not match.</div> : null}
       </form>
-      {validated ? <div>Passwords do not match.</div> : null}
     </>
   );
 };

@@ -21,7 +21,7 @@
   padding-left: none;
 }
 
-#LogIn {
+#FormContainers {
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -42,10 +42,6 @@
 #HeadLog {
   display: flex;
   font-size: 45px;
-}
-
-#fields {
-  display: flex;
 }
 
 #Error {

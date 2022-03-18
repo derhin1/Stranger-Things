@@ -35,7 +35,7 @@ const Login = ({
   return (
     <div>
       <form
-        id="LogIn"
+        id="FormContainers"
         onSubmit={(event) => {
           event.preventDefault();
           loginStateValid();
@@ -45,7 +45,6 @@ const Login = ({
       >
         <h1 id="HeadLog"> Log In </h1>
         <input
-          id="fields"
           type="Text"
           placeholder="username"
           value={username}
