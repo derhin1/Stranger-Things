@@ -133,7 +133,7 @@ const AllPostInfo = ({ userObj }) => {
   }
 
 async function handleDelete(token, postId) {
-  const data = await deletePost(token, postId);
+  await deletePost(token, postId);
   history.push('/Posts')
 }
 

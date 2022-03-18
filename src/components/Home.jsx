@@ -1,8 +1,6 @@
 import React from "react";
-const Home = ({ loginState, userObj }) => {
-  function isEmpty(obj) {
-    return Object.keys(obj).length === 0;
-  }
+const Home = ({ userObj }) => {
+
   return (
     <>
       <h1> Welcome to Stranger's Things!</h1>

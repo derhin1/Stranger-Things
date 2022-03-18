@@ -6,8 +6,7 @@ const Login = ({
   setUsername,
   password,
   setPassword,
-  setLoginState,
-  loginState,
+  setLoginState
 }) => {
   const history = useHistory();
   const [displayError, setDisplayError] = useState(false);
@@ -64,7 +63,6 @@ const Login = ({
         <Link to="./Signup">Don't have an account? Sign Up!</Link>
       </form>
       {displayError ? <div> Username and Password Does Not Exist! </div> : null}
-      {/* <Link to="./Signup">Don't have an account? Sign Up!</Link> */}
     </div>
   );
 };

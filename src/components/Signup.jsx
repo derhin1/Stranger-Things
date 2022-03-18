@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { register } from "../api";
 import { useHistory } from "react-router-dom";
+
 const Signup = ({ username, setUsername, password, setPassword }) => {
   const history = useHistory()
   const [confirmedPassword, setConfirmedPassword] = useState("");

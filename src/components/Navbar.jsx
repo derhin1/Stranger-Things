@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  useHistory,
-} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Navbar = ({ loginState, setLoginState }) => {
   const history = useHistory();

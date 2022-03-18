@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { fetchPosts, AllPostInfo } from "../api";
-import { Link, useHistory } from "react-router-dom";
+import { fetchPosts } from "../api";
+import { useHistory } from "react-router-dom";
 import { SinglePost } from "./";
+
 const Posts = ({ loginState, userObj }) => {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +21,6 @@ const Posts = ({ loginState, userObj }) => {
   }
   const filteredPosts = posts.filter((post) => postMatches(post, searchTerm));
   const postsToDisplay = searchTerm.length ? filteredPosts : posts;
-
 
   useEffect(async () => {
     let data = await fetchPosts();

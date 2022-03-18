@@ -140,7 +140,6 @@ export const updateSinglePost = async (
     }
   );
   let data = await response.json();
-  console.log(data, "api data");
   return data;
 };
 
@@ -162,6 +161,5 @@ export const postAMessage = async (token, postId, textMessage) => {
   );
   let result = await response.json();
   const data = await result.data.message;
-  console.log(data, "I AM DATA POST A MESSAGE ");
   return data;
 };

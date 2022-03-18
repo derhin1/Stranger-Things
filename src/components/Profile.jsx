@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from "react-router-dom";
+
 const Profile = ({userObj}) => {
-    // console.log(userObj, 'userObj')
     const history = useHistory();
 
     function inboxDisplay(element){

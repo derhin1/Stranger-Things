@@ -1,15 +1,20 @@
 import React from "react";
-import { deletePost } from "../api";
-import { Link, useHistory } from "react-router-dom";
-import { AllPostInfo } from "./";
-const SinglePost = ({ posts, setPosts, post, userObj, loginState }) => {
+import { useHistory } from "react-router-dom";
+const SinglePost = ({ post, loginState }) => {
   const history = useHistory();
 
   function handleViewMessage(postId) {
     history.push(`/Posts/${postId}`);
   }
 
-
+  function deliveryText(post){
+    if(post.willDeliver){
+      return 'Yes'
+    }
+    else{
+      return 'No'
+    }
+  }
 
   return (
     <>
@@ -22,6 +27,8 @@ const SinglePost = ({ posts, setPosts, post, userObj, loginState }) => {
         <span className="content">{post.description}</span>
         <span className="subhead1">price:</span>
         <span className="content">{post.price}</span>
+        <span className="subhead1">Deliver?:</span>
+        <span className="content">{deliveryText(post)}</span>
       </>
 
       {loginState ? (
@@ -33,7 +40,6 @@ const SinglePost = ({ posts, setPosts, post, userObj, loginState }) => {
           View Post
         </button>
       ) : null}
-
     </>
   );
 };
