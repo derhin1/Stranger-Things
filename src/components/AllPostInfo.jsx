@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { fetchPosts, updateSinglePost, postAMessage } from "../api";
+import { useParams, useHistory } from "react-router-dom";
+import { fetchPosts, updateSinglePost, postAMessage, deletePost } from "../api";
 
 const AllPostInfo = ({ userObj }) => {
+  const history = useHistory()
   const params = useParams();
   const [singlePost, setSinglePost] = useState(null);
   const [title, setTitle] = useState("");
@@ -131,10 +132,11 @@ const AllPostInfo = ({ userObj }) => {
    }
   }
 
+async function handleDelete(token, postId) {
+  const data = await deletePost(token, postId);
+  history.push('/Posts')
+}
 
-  // function messagePostChecker(){
-  //   if()
-  // }
 
   return (
     <>
@@ -148,6 +150,21 @@ const AllPostInfo = ({ userObj }) => {
           ) : null
         ) : null}
         {editing ? editInputs : null}
+        
+        {userObj ?
+        singlePost ? (
+          singlePost.author.username === userObj.username ? 
+          (
+            <button
+              onClick={() => {
+                handleDelete(localStorage.getItem("token"), singlePost._id);
+              }}
+            >
+              Delete
+            </button>
+          ) : null
+          ) : null
+         : null}
       </>
 
       <>
@@ -160,7 +177,7 @@ const AllPostInfo = ({ userObj }) => {
               singlePost._id,
               messageText
             );
-            setMessageText('')
+            setMessageText("");
           }}
         >
           <input
